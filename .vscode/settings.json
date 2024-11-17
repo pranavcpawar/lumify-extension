@@ -1,4 +1,5 @@
 {
 	"editor.tabSize": 2,
-	"cSpell.words": ["luma", "Lumify"]
+	"cSpell.words": ["luma", "Lumify"],
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
