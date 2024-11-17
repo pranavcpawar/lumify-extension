@@ -24,9 +24,58 @@ document
 				},
 				function () {
 					console.log(`Field added ${fieldName}:${fieldValue}`);
+					loadData();
 				}
 			);
 		}
 
 		form.reset();
 	});
+
+function renderData(data) {
+	const container = document.querySelector(".fields__container");
+	console.log("container:", container);
+
+	container.innerHTML = "";
+
+	let fields = [];
+	if (data.length > 4) {
+		fields = data.slice(0, 3);
+	} else {
+		fields = data;
+	}
+
+	for (const [index, field] of Object.entries(fields)) {
+		console.log(`rendering field ${index}:`, field);
+		const fieldElement = document.createElement("div");
+		fieldElement.classList.add("fields__field");
+		if (Array.isArray(field.name)) {
+			fieldElement.innerHTML = `<span class="field__name">${field.name.join(
+				" && "
+			)}</span><span>${field.value}</span>`;
+		} else {
+			fieldElement.innerHTML = `<span class="field__name">${field.name}</span><span>${field.value}</span>`;
+		}
+		container.appendChild(fieldElement);
+	}
+}
+
+function loadData() {
+	chrome.storage.local.get(null, function (data) {
+		let fields = [];
+
+		for (const key in data) {
+			if (key.startsWith("ts_")) {
+				fields.push({
+					name: data[key].name,
+					value: data[key].value,
+				});
+			}
+		}
+		console.log("saved data:", fields);
+
+		renderData(fields.reverse());
+	});
+}
+
+document.addEventListener("DOMContentLoaded", loadData);
