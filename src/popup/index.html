@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/popup/index.css">
-  <title>Lumify</title>
-</head>
-<body>
-  <div id="root" class="root">
-    <header class="header">
-      <nav class="header__nav">
-        <img class="header__logo" src="/src/assets/lumify.svg" alt="lumify">
-        <h1 class="header__title">Lumify</h1>
-        <img class="header__settings" src="/src/assets/settings.svg" alt="settings">
-      </nav>
-    </header>
-    <main class="main">
-      <section class="add">
-        <form class="add__form">
-          <div class="add__form__fields">
-            <input class="add__input" type="text" placeholder="Field Name e.g. First && Name ">
-            <input class="add__input" type="text" placeholder="Value e.g. John">
-          </div>
-          <div class="add__button__container">
-            <button class="add__button">Add field</button>
-            <svg class="add__lumify" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path 
-                d="M5.67011 9.91398L8.73211 5.77098C10.7111 3.09298 11.7011 1.75398 12.6241 2.03698C13.5471 2.31998 13.5471 3.96198 13.5471 7.24698V7.55698C13.5471 8.74198 13.5471 9.33398 13.9261 9.70498L13.9461 9.72498C14.3331 10.088 14.9491 10.088 16.1821 10.088C18.4021 10.088 19.5111 10.088 19.8861 10.761L19.9041 10.795C20.2581 11.478 19.6151 12.348 18.3301 14.085L15.2681 18.229C13.2881 20.907 12.2991 22.246 11.3761 21.963C10.4531 21.68 10.4531 20.038 10.4531 16.753V16.443C10.4531 15.258 10.4531 14.666 10.0741 14.295L10.0541 14.275C9.66711 13.912 9.05111 13.912 7.81811 13.912C5.59811 13.912 4.48911 13.912 4.11511 13.239L4.09611 13.205C3.74211 12.522 4.38511 11.653 5.67011 9.91498" 
-                fill="#AB9FF2"
-              />
-            </svg>
-          </div>
-        </form>
-      </section>
-      <section class="fields">
-        <h3 class="fields__title">Recent Fields</h3>
-        <div class="fields__container">
-        </div>
-      </section>
-    </main>
-  </div>
-  <script src="/src/popup/index.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unbounded:wght@200..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/src/popup/index.css" />
+		<title>Lumify</title>
+	</head>
+	<body>
+		<div id="root" class="root">
+			<header class="header">
+				<nav class="header__nav">
+					<img class="header__logo" src="/src/assets/lumify.svg" alt="lumify" />
+					<h1 class="header__title">Lumify</h1>
+					<img
+						class="header__settings"
+						src="/src/assets/settings.svg"
+						alt="settings"
+					/>
+				</nav>
+			</header>
+			<main class="main">
+				<section class="add">
+					<form id="add-data-form" class="add__form">
+						<div class="add__form__fields">
+							<input
+								id="field-name"
+								name="field-name"
+								class="add__input"
+								type="text"
+								autocomplete="off"
+								placeholder="Field Name e.g. First && Name "
+							/>
+							<input
+								id="field-value"
+								name="field-value"
+								class="add__input"
+								type="text"
+								autocomplete="off"
+								placeholder="Value e.g. John"
+							/>
+						</div>
+						<div class="add__button__container">
+							<button id="add-button" type="submit" class="add__button">
+								Add field
+							</button>
+							<svg
+								class="add__lumify"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M5.67011 9.91398L8.73211 5.77098C10.7111 3.09298 11.7011 1.75398 12.6241 2.03698C13.5471 2.31998 13.5471 3.96198 13.5471 7.24698V7.55698C13.5471 8.74198 13.5471 9.33398 13.9261 9.70498L13.9461 9.72498C14.3331 10.088 14.9491 10.088 16.1821 10.088C18.4021 10.088 19.5111 10.088 19.8861 10.761L19.9041 10.795C20.2581 11.478 19.6151 12.348 18.3301 14.085L15.2681 18.229C13.2881 20.907 12.2991 22.246 11.3761 21.963C10.4531 21.68 10.4531 20.038 10.4531 16.753V16.443C10.4531 15.258 10.4531 14.666 10.0741 14.295L10.0541 14.275C9.66711 13.912 9.05111 13.912 7.81811 13.912C5.59811 13.912 4.48911 13.912 4.11511 13.239L4.09611 13.205C3.74211 12.522 4.38511 11.653 5.67011 9.91498"
+									fill="#AB9FF2"
+								/>
+							</svg>
+						</div>
+					</form>
+				</section>
+				<section class="fields">
+					<h3 class="fields__title">Recent Fields</h3>
+					<div class="fields__container"></div>
+				</section>
+			</main>
+		</div>
+		<script src="/src/popup/index.js"></script>
+	</body>
 </html>
