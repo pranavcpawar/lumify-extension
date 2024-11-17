@@ -1,18 +1,19 @@
 {
-  "name": "Lumify Autofill",
-  "version": "0.1.0",
-  "description": "A simple extension that autofill luma forms",
-  "manifest_version": 3,
-  "icons": {
-    "48": "/src/assets/logo48.png",
-    "128": "/src/assets/logo128.png",
-    "256": "/src/assets/logo256.png"
-  },
-  "action": {
-    "default_popup": "/src/popup/index.html"
-  },
-  "background": {
-    "service_worker": "background.js"
-  },
-  "host_permissions": ["https://*.lu.ma/*"]
+	"name": "Lumify Autofill",
+	"version": "0.1.0",
+	"description": "A simple extension that autofill luma forms",
+	"manifest_version": 3,
+	"icons": {
+		"48": "/src/assets/logo48.png",
+		"128": "/src/assets/logo128.png",
+		"256": "/src/assets/logo256.png"
+	},
+	"action": {
+		"default_popup": "/src/popup/index.html"
+	},
+	"background": {
+		"service_worker": "background.js"
+	},
+	"permissions": ["storage", "activeTab", "tabs", "scripting"],
+	"host_permissions": ["https://*.lu.ma/*"]
 }
