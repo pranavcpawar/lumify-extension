@@ -14,6 +14,12 @@
 	"background": {
 		"service_worker": "background.js"
 	},
+	"content_scripts": [
+		{
+			"matches": ["https://*.lu.ma/*"],
+			"js": ["content.js"]
+		}
+	],
 	"permissions": ["storage", "activeTab", "tabs", "scripting"],
 	"host_permissions": ["https://*.lu.ma/*"]
 }
