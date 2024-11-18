@@ -71,6 +71,20 @@ function detectLumaForm() {
 	});
 }
 
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+	console.log("Received message:", request);
+	try {
+		if (request.action === "fillLumaForm") {
+			fillLumaForm();
+			sendResponse({ message: "Form filled" });
+		}
+	} catch (error) {
+		console.error("Error:", error);
+		sendResponse({ message: "Error" });
+	}
+	return true;
+});
+
 window.addEventListener("load", function () {
 	detectLumaForm();
 });
