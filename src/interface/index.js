@@ -52,10 +52,13 @@ function actions() {
 					console.log("data:", data);
 					save.addEventListener("click", function () {
 						if (inputName.value && inputValue.value) {
+							const input = inputName.value.includes(" && ")
+								? inputName.value.split(" && ")
+								: inputName.value;
 							chrome.storage.local.set(
 								{
 									[ts]: {
-										name: inputName.value,
+										name: input,
 										value: inputValue.value,
 									},
 								},
@@ -75,16 +78,18 @@ function actions() {
 									},
 									function () {
 										console.log("Edited data!");
-
 										loadData();
 									}
 								);
 							}
 							if (inputName.value) {
+								const input = inputName.value.includes(" && ")
+									? inputName.value.split(" && ")
+									: inputName.value;
 								chrome.storage.local.set(
 									{
 										[ts]: {
-											name: inputName.value,
+											name: input,
 											value: data[ts].value,
 										},
 									},
