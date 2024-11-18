@@ -211,10 +211,20 @@ svg:hover path {
 	width: 100%;
 	height: 280px;
 	padding: 0.5rem;
-  gap: 0.5rem;
+	gap: 0.5rem;
 	border: 1px solid #303030;
 	font-family: "Epilogue", sans-serif;
 	border-radius: 6px;
+}
+
+.fields__header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 .fields__title {
@@ -226,6 +236,22 @@ svg:hover path {
 	letter-spacing: -0.02rem;
 	text-underline-offset: 0.2rem;
 	text-decoration: underline;
+	width: 100%;
+	text-align: center;
+}
+
+.fields__list {
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.fields__list:hover {
+	filter: invert(1);
+}
+
+.fields__list:active {
+	scale: 0.95;
 }
 
 .fields__container {
@@ -245,11 +271,11 @@ svg:hover path {
 	justify-content: center;
 	width: 100%;
 	padding: 0.5rem;
-  gap: 0.5rem;
+	gap: 0.5rem;
 	border: 1px solid #303030;
 	border-radius: 4px;
 	background-color: #181818;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	font-weight: 400;
 	line-height: 1.2rem;
 	font-family: "Epilogue", sans-serif;

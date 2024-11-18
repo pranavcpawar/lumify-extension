@@ -44,6 +44,10 @@ document.getElementById("add-lumify").addEventListener("click", function () {
 	});
 });
 
+document.getElementById("add-list").addEventListener("click", function () {
+	chrome.tabs.create({ url: "/src/interface/index.html" });
+});
+
 function renderData(data) {
 	const container = document.querySelector(".fields__container");
 	console.log("container:", container);
