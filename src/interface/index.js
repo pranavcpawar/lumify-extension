@@ -40,6 +40,74 @@ function actions() {
 					loadData();
 				});
 			}
+			if (button.id.startsWith("edit-")) {
+				const ts = button.id.split("-")[1];
+				console.log("ts:", ts);
+				const modal = document.getElementById("modal");
+				const inputName = document.getElementById("edit-field-name");
+				const inputValue = document.getElementById("edit-field-value");
+				const save = document.querySelector(".modal__save");
+				modal.style.display = "block";
+				chrome.storage.local.get(ts, function (data) {
+					console.log("data:", data);
+					save.addEventListener("click", function () {
+						if (inputName.value && inputValue.value) {
+							chrome.storage.local.set(
+								{
+									[ts]: {
+										name: inputName.value,
+										value: inputValue.value,
+									},
+								},
+								function () {
+									console.log("Edited data!");
+									loadData();
+								}
+							);
+						} else {
+							if (inputValue.value) {
+								chrome.storage.local.set(
+									{
+										[ts]: {
+											name: data[ts].name,
+											value: inputValue.value,
+										},
+									},
+									function () {
+										console.log("Edited data!");
+
+										loadData();
+									}
+								);
+							}
+							if (inputName.value) {
+								chrome.storage.local.set(
+									{
+										[ts]: {
+											name: inputName.value,
+											value: data[ts].value,
+										},
+									},
+									function () {
+										console.log("Edited data!");
+										loadData();
+									}
+								);
+							}
+						}
+						modal.style.display = "none";
+						inputName.value = "";
+						inputValue.value = "";
+					});
+				});
+				window.addEventListener("click", function (event) {
+					if (event.target === modal) {
+						modal.style.display = "none";
+						inputName.value = "";
+						inputValue.value = "";
+					}
+				});
+			}
 		});
 	}
 }
