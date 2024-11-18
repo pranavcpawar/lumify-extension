@@ -1,9 +1,13 @@
 function fillLumaForm() {
-	const form = document.querySelector("form");
-	const inputs = form.querySelectorAll(".luma-input:not(.has-indicator)");
-	const labels = form.querySelectorAll(".lux-input-label");
-
 	chrome.storage.local.get(null, function (data) {
+		const form = document.querySelector("form");
+
+		const inputs = form.querySelectorAll(".luma-input:not(.has-indicator)");
+		const labels = form.querySelectorAll("div.lux-input-wrapper:not(.full-width) label");
+
+		console.log("inputs:", inputs);
+		console.log("labels:", labels);
+
 		let fields = [];
 
 		for (let key in data) {
@@ -32,8 +36,8 @@ function fillLumaForm() {
 			for (const field of fields) {
 				console.log("field:", field);
 				const regex = Array.isArray(field.name)
-					? new RegExp(`(?=.*\\b${field.name.join("\\b)(?=.*\\b")}\\b)`, "i")
-					: new RegExp(`(?=.*\\b${field.name}\\b)`, "i");
+					? new RegExp(`(?=.*\\b${field.name.join("\\b)(?=.*\\b")}\\b)`)
+					: new RegExp(`(?=.*\\b${field.name}\\b)`);
 
 				const isValid = regex.test(labelText);
 
