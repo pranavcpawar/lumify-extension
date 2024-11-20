@@ -1,6 +1,6 @@
 {
 	"name": "Lumify Autofill",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A simple extension that autofill luma forms",
 	"manifest_version": 3,
 	"icons": {
